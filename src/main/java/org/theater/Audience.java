@@ -1,6 +1,6 @@
 package org.theater;
 
-// 관람객이 소극장의 통제를 받는 소극적인 존재이다.
+// 관람객이 자신이 가지는 소지품을 스스로 관리한다.
 public class Audience {
     private Bag bag;
 
@@ -8,7 +8,14 @@ public class Audience {
         this.bag = bag;
     }
 
-    public Bag getBag() {
-        return bag;
+    public Long buy(Ticket ticket){
+        if(bag.hasInvitaion()){
+            bag.setTicket(ticket);
+            return 0L;
+        } else{
+            bag.setTicket(ticket);
+            bag.minusAmount(ticket.getFee());
+            return ticket.getFee();
+        }
     }
 }

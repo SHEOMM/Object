@@ -1,6 +1,6 @@
 package org.theater;
 
-// 판매원이 소극장의 통제를 받는 소극적인 존재이다.
+// 판매원이 자신이 가지는 소지품을 스스로 관리한다.
 public class TicketSeller {
     private TicketOffice ticketOffice;
 
@@ -8,7 +8,7 @@ public class TicketSeller {
         this.ticketOffice = ticketOffice;
     }
 
-    public TicketOffice getTicketOffice() {
-        return ticketOffice;
+    public void sellTo(Audience audience){
+        ticketOffice.plusAmount(audience.buy(ticketOffice.getTicket()));
     }
 }
