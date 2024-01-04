@@ -18,6 +18,17 @@ public class Bag {
         return invitation != null;
     }
 
+    public Long hold(Ticket ticket){
+        if(hasInvitaion()){
+            setTicket(ticket);
+            return 0L;
+        }else{
+            setTicket(ticket);
+            minusAmount(ticket.getFee());
+            return ticket.getFee();
+        }
+    }
+
     public boolean hasTicket(){
         return ticket != null;
     }
